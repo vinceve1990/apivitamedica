@@ -1,0 +1,113 @@
+{
+  "yapsi": {
+    "version": "v1",
+    "url_server": "http://api.yapsi.com.mx/",
+    "merchant_id": "4B7D3A29-FA50-4BC2-8D95-61832527F305",
+    "private_key": "41DD6E73-76B7-4554-B4C1-374A39F27787",
+    "cay_account": "3001000000002",
+    "time_transactions": "6,57",
+    "available_time": "08:00-20:00",
+    "num_service": 4,
+    "endpoints": {
+      "cay_validate": {
+        "url": "mx/keys/validate",
+        "api_key": "",
+        "transaction": 0,
+        "trxsub": 0,
+        "trxtype": 4,
+        "label" : "CAY"
+      },
+      "deposit": {
+        "url": "transactions/cay_deposits",
+        "api_key": "d4c3d66fd0c38547a3c7a4c6bdc29c36911bc030",
+        "transaction": 57,
+        "trxsub": 2,
+        "trxtype": 4,
+        "label" : "DEP"
+      },
+      "digitalize": {
+        "url": "transactions/cay_deposits",
+        "api_key": "d4c3d66fd0c38547a3c7a4c6bdc29c36911bc030",
+        "transaction": 58,
+        "trxsub": 2,
+        "trxtype": 4,
+        "label" : "DIG"
+      },
+      "refund": {
+        "url": "transactions/cay_deposits",
+        "api_key": "d4c3d66fd0c38547a3c7a4c6bdc29c36911bc030",
+        "transaction": 59,
+        "trxsub": 9,
+        "trxtype": 4,
+        "label" : "REF"
+      },
+      "payment": {
+        "url": "mx/payment/pay",
+        "api_key": "",
+        "transaction": 62,
+        "trxsub": 1,
+        "trxtype": 4,
+        "label" : "PAY"
+      },
+      "withdrawal": {
+        "url": "mx/payment/pay",
+        "api_key": "",
+        "transaction": 41,
+        "trxsub": 7,
+        "trxtype": 4,
+        "label" : "WIT"
+      },
+      "reverse": {
+        "url": "transactions/reverse",
+        "api_key": "d4c3d66fd0c38547a3c7a4c6bdc29c36911bc030",
+        "transaction": 3,
+        "trxsub": 9,
+        "trxtype": 4,
+        "label" : "REV"
+      },
+      "Conciliation": {
+        "url": "http://10.100.11.141:30293/records/yapsi/ws",
+        "api_key": "",
+        "transaction": 4,
+        "trxsub": 0,
+        "trxtype": 4,
+        "label" : "CON"
+      },
+      "bondCertificate": {
+        "url": "mx/payment/pay",
+        "api_key": "d4c3d66fd0c38547a3c7a4c6bdc29c36911bc030",
+        "transaction": 31,
+        "trxsub": 2,
+        "trxtype": 4,
+        "label" : "BON"
+      }
+    }
+  },
+  "database": {
+    "DB_HOST": "10.100.11.60",
+    "DB_PORT": 3306,
+    "DB_USER": "user_operator",
+    "DB_PASS": "Y4Ps1Us3r_RMTE",
+    "DB_DATABASE": "yapsi",
+    "DB_TYPE": 2,
+    "DB_PARAMS": "",
+    "DB_DRIVER": "com.mysql.jdbc.Driver"
+  },
+  "logger": {
+    "path": "logs",
+    "layout": "%d %-5p %m%n",
+    "fileName": "yapsi-process.log",
+    "dateFormat": "yyyy-MM-dd",
+    "level": 1,
+    "console": true
+  },
+  "saelData": {
+  "site": 1
+},
+  "proxy": {
+    "ip": "10.11.6.2",
+    "port": "3128",
+    "protocol": "http",
+    "stack": "10.100.11.141|10.100.2.29|localhost"
+  }
+}
