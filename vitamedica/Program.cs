@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using vitamedica.log;
+using vitamedica.Models;
 using vitamedica.Models.ConexionBD;
 using vitamedica.Models.ConexionRV;
 
@@ -36,18 +39,16 @@ if (WSVitamedica.AppSettings.TipoApi == "QA") {
 
 }
 
-string logFilePath = "console_log.txt";
+string logFilePath = "/opt/services/logs.txt";
 
-using (StreamWriter logFileWriter = new StreamWriter(logFilePath, append: true)) {
+StreamWriter logFileWriter = new StreamWriter(logFilePath, append: true);
     //Create an ILoggerFactory
     ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
     {
         //Add console output
-        builder.AddSimpleConsole(options =>
+        builder.AddConsole(options =>
         {
-            options.IncludeScopes = true;
-            options.SingleLine = true;
-            options.TimestampFormat = "HH:mm:ss ";
+            options.FormatterName = ConsoleFormatterNames.Simple;
         });
 
         //Add a custom log provider to write logs to text files
@@ -56,15 +57,12 @@ using (StreamWriter logFileWriter = new StreamWriter(logFilePath, append: true))
 
     //Create an ILogger
     ILogger<Program> logger = loggerFactory.CreateLogger<Program>();
+    VitamedicaUtils.Logger = logger;
 
     // Output some text on the console
-    using (logger.BeginScope("[scope is enabled]")) {
-        logger.LogInformation("Hello World!");
-        logger.LogInformation("Logs contain timestamp and log level.");
-        logger.LogInformation("Each log message is fit in a single line.");
-    }
-}
+    
 
+VitamedicaUtils.Logger.LogInformation(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " Hello World!");
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

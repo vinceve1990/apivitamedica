@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\webApi\\apivitamedica\\vitamedica\\vitamedica.csproj": {}
+    "D:\\Documentos\\apivitamedica\\vitamedica\\vitamedica.csproj": {}
   },
   "projects": {
-    "C:\\webApi\\apivitamedica\\vitamedica\\vitamedica.csproj": {
+    "D:\\Documentos\\apivitamedica\\vitamedica\\vitamedica.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\webApi\\apivitamedica\\vitamedica\\vitamedica.csproj",
+        "projectUniqueName": "D:\\Documentos\\apivitamedica\\vitamedica\\vitamedica.csproj",
         "projectName": "vitamedica",
-        "projectPath": "C:\\webApi\\apivitamedica\\vitamedica\\vitamedica.csproj",
+        "projectPath": "D:\\Documentos\\apivitamedica\\vitamedica\\vitamedica.csproj",
         "packagesPath": "C:\\Users\\Efrain_Cervantes\\.nuget\\packages\\",
-        "outputPath": "C:\\webApi\\apivitamedica\\vitamedica\\obj\\",
+        "outputPath": "D:\\Documentos\\apivitamedica\\vitamedica\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Efrain_Cervantes\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -21,8 +21,7 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "http://10.15.24.212:8081/repository/NugetFG": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -91,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

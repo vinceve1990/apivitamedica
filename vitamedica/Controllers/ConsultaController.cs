@@ -7,20 +7,19 @@ namespace vitamedica.Controllers {
     [ApiController]
     public class ConsultaController : ControllerBase {
         public readonly VitamedicaContext VitamedicaContext;
-        public VitamedicaUtils vitamedicaUtils;
         private object jsonResp;
-        private readonly ILogger<ConsultaController> logger;
+        private ILogger logger = VitamedicaUtils.Logger;
 
-        public ConsultaController(VitamedicaContext context, ILogger<ConsultaController> logger) {
+        public ConsultaController(VitamedicaContext context) {
             VitamedicaContext = context;
-            this.logger = logger;
         }
 
         [HttpGet]
         [Produces("application/json")]
         [Consumes("application/json")]
         public async Task<JsonResult> consultaReceta() {
-            logger.LogWarning("Inicio de Consulta");
+            logger.LogInformation("Inicio de Consulta");
+        
             return new JsonResult(jsonResp);
         }
     }

@@ -3,5 +3,6 @@
         public static int lote {  get; set; }
         public static int folio { get; set; }
         public static int colotes { get; set; }
+        public static ILogger Logger { get; set; }
     }
 }
