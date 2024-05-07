@@ -1,0 +1,6 @@
+[Information] [Program] Hello World!
+[Information] [Program] Logs contain timestamp and log level.
+[Information] [Program] Each log message is fit in a single line.
+[Information] [Program] Hello World!
+[Information] [Program] Logs contain timestamp and log level.
+[Information] [Program] Each log message is fit in a single line.

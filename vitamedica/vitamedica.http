@@ -1,0 +1,6 @@
+@vitamedica_HostAddress = http://localhost:5196
+
+GET {{vitamedica_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
