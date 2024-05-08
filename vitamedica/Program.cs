@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using vitamedica.log;
 using vitamedica.Models;
@@ -10,11 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-var configBuilder = new ConfigurationBuilder()
+/*var configBuilder = new ConfigurationBuilder()
     .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-    .AddJsonFile("/opt/services/VitamedicaConfig.json", optional: false, reloadOnChange: true);
+    .AddJsonFile("/opt/services/VitamedicaConfig.json", optional: false, reloadOnChange: true);*/
 
-//var configBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("vitamedica-config.json");
+var configBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("vitamedica-config.json");
 
 var config = configBuilder.Build();
 
@@ -39,30 +38,29 @@ if (WSVitamedica.AppSettings.TipoApi == "QA") {
 
 }
 
-string logFilePath = "/opt/services/logs.txt";
+string logFilePath = config["Logging:filepath"];
 
 StreamWriter logFileWriter = new StreamWriter(logFilePath, append: true);
-    //Create an ILoggerFactory
-    ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
-    {
-        //Add console output
-        builder.AddConsole(options =>
-        {
-            options.FormatterName = ConsoleFormatterNames.Simple;
-        });
 
-        //Add a custom log provider to write logs to text files
-        builder.AddProvider(new CustomFileLoggerProvider(logFileWriter));
+//Create an ILoggerFactory
+ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
+{
+    //Add console output
+    builder.AddConsole(options =>
+    {
+        options.FormatterName = ConsoleFormatterNames.Simple;
     });
 
-    //Create an ILogger
-    ILogger<Program> logger = loggerFactory.CreateLogger<Program>();
-    VitamedicaUtils.Logger = logger;
+    //Add a custom log provider to write logs to text files
+    builder.AddProvider(new CustomFileLoggerProvider(logFileWriter));
+});
 
-    // Output some text on the console
-    
+//Create an ILogger
+ILogger<Program> logger = loggerFactory.CreateLogger<Program>();
+VitamedicaUtils.Logger = logger;
 
-VitamedicaUtils.Logger.LogInformation(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " Hello World!");
+VitamedicaUtils.Logger.LogInformation(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " Inicio Vitamedica");
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -10,7 +10,7 @@ namespace vitamedica.Controllers {
         private object jsonResp;
         private ILogger logger = VitamedicaUtils.Logger;
 
-        public ConsultaController(VitamedicaContext context) {
+        public ConsultaController(VitamedicaContext context, ILogger<ConsultaController> logger) {
             VitamedicaContext = context;
         }
 
@@ -18,8 +18,17 @@ namespace vitamedica.Controllers {
         [Produces("application/json")]
         [Consumes("application/json")]
         public async Task<JsonResult> consultaReceta() {
-            logger.LogInformation("Inicio de Consulta");
-        
+            logger.LogInformation(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " Inicio de Consulta");
+            try {
+                VitHeader vitHeader = VitamedicaUtils.leerHeader(Request.Headers, "CON");
+
+                logger.LogInformation(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " Lote");
+
+                logger.LogInformation(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " Folio");
+            } catch (Exception ex) {
+                logger.LogInformation(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " " + ex.Message);
+            }
+
             return new JsonResult(jsonResp);
         }
     }
